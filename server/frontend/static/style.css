@@ -58,7 +58,8 @@ img{
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  flex:1
+  flex:1;
+  padding: 5px;
 }
 
 .form_panel {
@@ -124,3 +125,32 @@ img{
     text-align:center;
     box-shadow: 2px 2px 3px #999;  
 }
+
+.about-img {
+    width: 100px;
+    height: 200px;
+}
+
+.contact-office {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+}
+
+.contact-us {
+    display: flex;
+    justify-content: space-between;
+}
+
+.contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contact-img {
+    width: 700px;
+    height: 300px;
+}
+
+
