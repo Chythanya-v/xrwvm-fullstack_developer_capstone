@@ -24,7 +24,7 @@ def get_cars(request):
     cars = []
     for car_model in car_models:
         cars.append({"CarModel": car_model.name,
-                      "CarMake": car_model.car_make.name})
+                     "CarMake": car_model.car_make.name})
     return JsonResponse({"CarModels": cars})
 
 
@@ -81,7 +81,9 @@ def registration(request):
     if not username_exist:
         # Create user in auth_user table
         user = User.objects.create_user(username=username,
-                                         first_name=first_name, last_name=last_name, password=password, email=email)
+                                        first_name=first_name,
+                                        last_name=last_name,
+                                        password=password, email=email)
         # Login the user and redirect to list page
         login(request, user)
         data = {"userName": username, "status": "Authenticated"}
@@ -95,14 +97,15 @@ def registration(request):
 # a list of dealerships
 # def get_dealerships(request):
 # ...
-# Update the `get_dealerships` render list of dealerships all by default, particular state if state is passed
+# Update the `get_dealerships` render list of dealerships all by default, 
+# particular state if state is passed
 def get_dealerships(request, state="All"):
     if (state == "All"):
         endpoint = "/fetchDealers"
     else:
         endpoint = "/fetchDealers/"+state
     dealerships = get_request(endpoint)
-    return JsonResponse({"status": 200,"dealers": dealerships})
+    return JsonResponse({"status": 200, "dealers": dealerships})
 
 
 # Create a `get_dealer_reviews` view to render the reviews of a dealer
@@ -147,6 +150,6 @@ def add_review(request):
         except Exception as e:
             print(f"Error: {e}")
             return JsonResponse({"status": 401,
-                                  "message": "Error in posting review"})
+                                 "message": "Error in posting review"})
     else:
         return JsonResponse({"status": 403, "message": "Unauthorized"})
